@@ -2,14 +2,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonBox = document.getElementById('button_box');
     const idinput = document.getElementById("idbox");
     const pwinput = document.getElementById("pwbox");
-
+    const button = document.getElementById('button');
     buttonBox.addEventListener('mouseenter', () => {
         const allEmpty = (idinput.value == '' || pwinput.value =='');
         if (allEmpty) {
             moveBoxRandomly();
         }
     });
+    button.addEventListener('mouseenter', () => {
+        const allEmpty = (idinput.value == '' || pwinput.value =='');
+        if (allEmpty) {
+            moveBoxRandomly();
+        }
+    });
 });
+
 function moveBoxRandomly() {
     const container = document.getElementById('position_box');
     const box = document.getElementById('button_box');
