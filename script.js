@@ -1,20 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('mousemove', (e) => {
     const buttonBox = document.getElementById('button_box');
-    const idinput = document.getElementById("idbox");
-    const pwinput = document.getElementById("pwbox");
-    const button = document.getElementById('button');
-    buttonBox.addEventListener('mouseenter', () => {
-        const allEmpty = (idinput.value == '' || pwinput.value =='');
-        if (allEmpty) {
-            moveBoxRandomly();
-        }
-    });
-    button.addEventListener('mouseenter', () => {
-        const allEmpty = (idinput.value == '' || pwinput.value =='');
-        if (allEmpty) {
-            moveBoxRandomly();
-        }
-    });
+    const positionBox = document.getElementById('position_box');
+    const input1 = document.getElementById('idbox');
+    const input2 = document.getElementById('pwbox');
+    const allEmpty = input1.value == '' || input2.value == '';
+    if (!allEmpty) return;
+
+    const rect = buttonBox.getBoundingClientRect();
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    if (
+        mouseX >= rect.left &&mouseX <= rect.right &&mouseY >= rect.top &&mouseY <= rect.bottom
+    ) {
+        moveBoxRandomly();
+    }
 });
 
 function moveBoxRandomly() {
